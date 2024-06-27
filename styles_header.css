@@ -1,0 +1,142 @@
+/* Header */
+.container {
+    width: 90vw;
+    max-width: 62.5em;
+    /* border: 1px solid black; */
+    position: relative;
+    margin: auto;
+}
+
+/* .navbar {
+    border: 1px solid red;
+} */
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin-left: 8.3em;
+    align-items: center;
+    padding: 1.2em 1em;
+}
+
+ .navbar-menu button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+ }
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#quiz {
+    text-decoration: none;
+}
+
+.navbar_btn {
+    display: flex;
+    margin: 0 0.2em;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn_color);
+    color: #fff;
+    font-size: 1em;
+    padding: 0.8em 1.4em;
+    font-weight: 500;
+    border-radius: 0.4em;
+    
+}
+
+.edit_btn {
+    background-color: transparent;
+    color: var(--btn_color);
+    padding: 0;
+    font-size: 1.4em;
+    margin-right: 10.4em;
+    margin-top: 0.4em;
+}
+
+.edit_btn:hover {
+    text-decoration: underline;
+    color: var(--main_text_color);
+}
+
+@media screen and (max-width: 960px) {
+    .navbar {
+        display: flex;
+        justify-content: center;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+
+    .navbar-menu {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: flex;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        /* DELETE ME */
+        /* background: rgba(28, 0, 80, 0.9); */
+        transition: all 0.5s ease;
+        height: 50vh; /* this means the menu will occupy 50% of the visible screen height */
+        z-index: -1;
+    }
+
+    .navbar-menu button {
+        width: 100%;
+        height: 100%;
+        font-size: 1.5em;
+    }
+
+    .navbar-menu.active {
+        background: rgba(28, 0, 80, 0.9);
+        padding-top: 4em;
+        top: 0%; /* shows the entire active menu */
+        opacity: 1; /* so that we can see the menu */
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 60vh;
+    }
+
+    .navbar_toggle .bar { /* 3 bars on top right of the screen */
+        width: 25px;
+        height: 4px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+        display: block;
+        cursor: pointer;
+    }
+
+    #mobile-menu {
+        z-index: 100;
+        position: absolute;
+        right: 7%;
+        transform: translate(5%, 20%);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) { /* javascript (targets the second child of bar) */
+        opacity: 0; /* second bar is invisible*/
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1) { /* javascript (targets the first child of bar) */
+        transform: translateY(9px) rotate(45deg);
+
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3) { /* javascript (targets the third child of bar) */
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* ^Header */
