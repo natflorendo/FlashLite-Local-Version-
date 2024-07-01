@@ -37,7 +37,7 @@ if(isset($_GET['requested'])) {
 
     lowestID();
 
-    $query = "SELECT * FROM flashcards WHERE user_id='$user_id'";
+    $query = "SELECT * FROM flashcards WHERE user_id='$user_id' ORDER BY fcard_id";
     $results = mysqli_query($db, $query);
 
     $flashcards = array();
@@ -57,7 +57,7 @@ if(isset($_POST['changeIndexes'])) {
     //another user could delete a card while switching indexes
     lowestID();
 
-    $query = "SELECT * FROM flashcards WHERE user_id='$user_id'";
+    $query = "SELECT * FROM flashcards WHERE user_id='$user_id' ORDER BY fcard_id";
     $results = mysqli_query($db, $query);
 
     $flashcards = array();
@@ -114,7 +114,7 @@ function lowestID() {
     //re-sequence the ID's starting from 1.
     //@count:=@count + 1 means that count increments 
     //by 1 for each row processed.
-    $query = "UPDATE flashcards SET fcard_id=@count:=@count + 1";
+    $query = "UPDATE flashcards SET fcard_id=@count:=@count + 1 ORDER BY fcard_id";
     mysqli_query($db, $query);
     //Add auto-increment attrubute back
     $query = "ALTER TABLE flashcards MODIFY fcard_id INT NOT NULL AUTO_INCREMENT";
