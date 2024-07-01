@@ -103,19 +103,19 @@
             <div class="social_media-wrap">
                 <p class="website_rights"></p>
                 <div class="social_icons">
-                    <a href="https://www.tiktok.com/@nathan_florendo?_t=8myaliZR5h9&_r=1" class="social_icon-link" target="_blank">
+                    <a href="https://tiktok.com/@nathan_florendo" class="social_icon-link" target="_blank">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://www.instagram.com/nathan_florendo?igsh=MTRpdnY4YjVlaDNzeA%3D%3D&utm_source=qr" class="social_icon-link" target="_blank">
+                    <a href="https://instagram.com/nathan_florendo" class="social_icon-link" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://github.com/natflorendo" class="social_icon-link" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/nathan-florendo-435b54213?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social_icon-link" target="_blank">
+                    <a href="https://linkedin.com/in/nathan-florendo/" class="social_icon-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://youtube.com/@bleh8106?si=RslB-YDJsi2f9D06" class="social_icon-link" target="_blank">
+                    <a href="https://youtube.com/@bleh8106" class="social_icon-link" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
