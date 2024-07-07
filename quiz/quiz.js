@@ -12,6 +12,8 @@ const hiddenMickey = document.querySelector('img');
 const feedbackContainer = document.querySelector('.feedback-container');
 const correctContainer = document.querySelector('.correct-container');
 const incorrectContainer = document.querySelector('.incorrect-container');
+const overrideBtn = document.querySelector('.override');
+const nextBtn = document.querySelector('.next-btn');
 var flashcardVector = [];
 var usedIndexes = [];
 let NUM_QUESTIONS;
@@ -23,6 +25,7 @@ let acceptingAnswers = false;
 
 // lower font when h1 is at 200 characters
 function playGame() {
+    overrideBtn.classList.add("hide"); nextBtn.classList.add("hide");
     numCorrect.innerText = `${correctCounter}/${questionsAnswered}`;
     let percentageDone = `${(questionsAnswered/NUM_QUESTIONS) * 100}%`;
     progressBarFull.style.width = percentageDone;
@@ -34,6 +37,15 @@ function playGame() {
     } else {
         percentCorrect.innerText = `${((correctCounter/questionsAnswered) * 100).toFixed(2)}%`;
     }
+}
+
+//resets screen before advanding to get the next question
+function reset(classToApply) {
+    userAnswer.disabled = false; sendAnswer.disabled = false;
+    userAnswer.classList.remove(classToApply);
+    userAnswer.value = "";
+    label.classList.remove(classToApply + "Span");
+    label.innerText = "ANSWER";
 }
 
 sendAnswer.addEventListener('click', checkAnswer = () => {
@@ -61,14 +73,18 @@ sendAnswer.addEventListener('click', checkAnswer = () => {
     updateDb("quizAnswer", questionsIndex);
 
     //reset everything after timeout
-    setTimeout(() => {
-        userAnswer.disabled = false; sendAnswer.disabled = false;
-        userAnswer.classList.remove(classToApply);
-        userAnswer.value = "";
-        label.classList.remove(classToApply + "Span");
-        label.innerText = "ANSWER";
-        playGame();
-    }, 1000);
+    if(flashcardVector[questionsIndex].correct === true) {
+        setTimeout(() => {
+            reset(classToApply);
+            playGame();
+        }, 1000);
+    } else {
+        overrideBtn.classList.remove("hide"); nextBtn.classList.remove("hide");
+        
+        //if user was incorrect they can override or advance
+        overrideBtn.addEventListener('click', handleOverride);
+        nextBtn.addEventListener('click', handleNext);
+    }
 });
 
 document.addEventListener('keydown', (e) => {
@@ -104,6 +120,28 @@ function generateRandomIndex() {
     usedIndexes.push(newIndex);
 
     return newIndex;
+}
+
+//if user was incorrect they can override or advance
+function handleOverride() {
+    overrideBtn.removeEventListener('click', handleOverride);
+    nextBtn.removeEventListener('click', handleNext);
+    //remove incorrect class
+    userAnswer.classList.remove("incorrect"); 
+    label.classList.remove("incorrectSpan");
+    //change to be correct
+    userAnswer.value = flashcardVector[questionsIndex].answer;
+    questionsAnswered--;
+    acceptingAnswers = true;
+    checkAnswer();
+}
+
+function handleNext() {
+    overrideBtn.removeEventListener('click', handleOverride);
+    nextBtn.removeEventListener('click', handleNext);
+
+    reset("incorrect");
+    playGame();
 }
 
 restartQuiz.addEventListener('click', () => {

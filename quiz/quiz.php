@@ -64,6 +64,11 @@
         <form method="post" action="quiz.php?mode=quiz">    
             <button type="submit" class="restartQuiz" name="restartQuiz">Restart Quiz</button>
         </form>
+        <div class="incorrect-override-option">
+            <button class="override hide">I'm Never Wrong</button>
+            <button class="next-btn hide">NEXT</button>
+        </div>
+        <!-- Not needed at all visually on this page-->
         <form method="post" action="quiz.php?mode=quiz_end" class="hide">    
             <button type="submit" class="finishedQuiz" name="finishedQuiz"></button>
         </form>
@@ -115,11 +120,16 @@
                 <div class="incorrect-container"></div>
             </div>
         </div>
-        <button type="button" class="sendAnswer hide" name="sendAnswer"><i class="fas fa-paper-plane"></i></button>
         <form method="post" action="quiz.php?mode=quiz">    
             <button type="submit" class="restartQuiz restartQuiz2" name="restartQuiz2">Restart Quiz</button>
         </form>
     </div>
+     <!-- Not needed at all visually on this page-->
+    <button type="button" class="sendAnswer hide" name="sendAnswer"><i class="fas fa-paper-plane"></i></button>
+    <div class="incorrect-override-option hide">
+            <button class="override"></button>
+            <button class="next-btn"></button>
+        </div>
 <?php
     }
     ?>

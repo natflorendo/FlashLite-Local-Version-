@@ -29,7 +29,8 @@ button, a {
     text-decoration: none;
 }
 
-.home-btn, .restartQuiz, .restartQuiz2 {
+.home-btn, .restartQuiz, .restartQuiz2,
+.override, .next-btn {
     display: flex;
     margin: 0.2em;
     justify-content: center;
@@ -40,6 +41,13 @@ button, a {
     padding: 0.4em 1em;
     font-weight: 500;
     border-radius: 0.4em;
+}
+
+.incorrect-override-option {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 55%;
 }
 
 .restartQuiz {
