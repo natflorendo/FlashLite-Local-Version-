@@ -449,8 +449,8 @@ const updateDb = (keyword, index) => {
     // edit or delete flashcard
     let userQuestion = flashcardVector[index].children[0].innerHTML;
     let userAnswer = flashcardVector[index].children[2].innerHTML;
-    userQuestion = userQuestion.replace(/[\\'"]/g, '\\$1');
-    userAnswer = userAnswer.replace(/[\\'"]/g, '\\$1');
+    userQuestion = userQuestion.replace(/([\\'"])/g, '\\$1');
+    userAnswer = userAnswer.replace(/([\\'"])/g, '\\$1');
     $.ajax({
         type: "POST",
         url: "server.php",
