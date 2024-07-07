@@ -18,6 +18,7 @@ const quiz = document.querySelector(".quiz");
 const showHideAll = document.querySelector(".show-hide-all");
 const draggables = document.querySelectorAll(".card");
 const droppable = document.querySelector(".card-list-container");
+const numCards = document.querySelector(".num-cards");
 let questionbf = ""; let answerbf = "";
 let pageLoaded = false;
 let editBool = false;
@@ -235,6 +236,7 @@ cardButton.addEventListener('click', (submitQuestion = () => {
 //Delete flashcard//////////////////
 yesDel.addEventListener('click', yDel = () => {
     delQuestionCard.classList.add("hide");
+    numCards.innerHTML = flashcardVector.length;
     if(delBool) {
         delBool = false;
         disableButtons(false); disableNavbar(false);
@@ -353,6 +355,7 @@ function viewlist() {
 
     flashcardVector.push(div);
     // console.log("length of vector: " + flashcardVector.length);
+    numCards.innerHTML = flashcardVector.length;
     if(flashcardVector.length !== 0) { emptyDisplay.classList.add("hide"); }
 
     if(pageLoaded) { updateDb("newCard", flashcardVector.indexOf(div)); }
@@ -446,8 +449,8 @@ const updateDb = (keyword, index) => {
     // edit or delete flashcard
     let userQuestion = flashcardVector[index].children[0].innerHTML;
     let userAnswer = flashcardVector[index].children[2].innerHTML;
-    userQuestion = userQuestion.replace(/['"]/g, '\\$&');
-    userAnswer = userAnswer.replace(/['"]/g, '\\$&');
+    userQuestion = userQuestion.replace(/[\\'"]/g, '\\$1');
+    userAnswer = userAnswer.replace(/[\\'"]/g, '\\$1');
     $.ajax({
         type: "POST",
         url: "server.php",

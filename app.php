@@ -24,7 +24,7 @@
     <?php 
         // echo "using user id: ".$_SESSION['user_id'];
         echo $_SESSION['email'];
-    ?> 
+    ?>
     <div class="container">
         <nav class="navbar">
             <div class="navbar_toggle" id="mobile-menu">
@@ -101,7 +101,7 @@
     <div class="footer_container">
         <div class="social_media">
             <div class="social_media-wrap">
-                <p class="website_rights"></p>
+                <div class="num-cards"></div>    
                 <div class="social_icons">
                     <a href="https://tiktok.com/@nathan_florendo" class="social_icon-link" target="_blank">
                         <i class="fab fa-tiktok"></i>
