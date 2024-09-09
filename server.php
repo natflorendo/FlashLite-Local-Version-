@@ -128,6 +128,13 @@ if(isset($_POST['quizAnswer'])) {
     $correct = $quizAnswer['correct']; $qanswered = $quizAnswer['qanswered'];
     $user_id = $_SESSION['user_id'];
 
+    //in case there are special characters
+    //need this for quizAnswer, but not for newCard because I modify
+    //question and answer before posting in updateDb in server.js
+    //but not in quiz.js
+    $question = mysqli_real_escape_string($db, $question);
+    $answer = mysqli_real_escape_string($db, $answer);
+
     $correct = $correct ? 1 : 0;
     $qanswered = $qanswered ? 1 : 0;
 
